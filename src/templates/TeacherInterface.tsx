@@ -25,6 +25,7 @@ const TeacherInterface: FC = () => {
     const [choise, setChoise] = useState<string>(userRole === "rop" ? "coverPage" : "selectTemplate");
     const jsonData = useStore.getState().jsonData;
     const navigate = useNavigate();
+    
     console.log(jsonData);
 
     if (!Object.keys(jsonData).length) {
@@ -40,7 +41,7 @@ const TeacherInterface: FC = () => {
                 <>
                     <Box minWidth={400} maxWidth={400} my={4} mr={2}>
                         <Box py={1} sx={{ position: "sticky", top: "20px", backgroundColor: '#fefefe' }}>
-                            <RpdList RpdListItems={RpdListItems} setChoise={setChoise} />
+                            <RpdList RpdListItems={RpdListItems()} setChoise={setChoise} currentChoise={choise}/>
                         </Box>
                     </Box>
                     <Box my={4} p={2} ml={2} sx={{ backgroundColor: '#fefefe', width: "100%" }}>

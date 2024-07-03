@@ -10,7 +10,7 @@ import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import useStore from "../../store/useStore";
 
-const RpdList: FC<RpdListProps> = ({ RpdListItems, setChoise }) => {
+const RpdList: FC<RpdListProps> = ({ RpdListItems, setChoise, currentChoise }) => {
     const jsonData = useStore.getState().jsonData;
     const navigate = useNavigate();
 
@@ -29,7 +29,14 @@ const RpdList: FC<RpdListProps> = ({ RpdListItems, setChoise }) => {
             <Divider />
             <List dense>
                 {RpdListItems.map((item) => (
-                    <RpdListItemComponent key={item.id} id={item.id} text={item.text} setChoise={setChoise} />
+                    <RpdListItemComponent 
+                        key={item.id} 
+                        id={item.id}
+                        text={item.text}
+                        setChoise={setChoise}
+                        currentChoise={currentChoise}
+                        isFilled={item.isFilled}
+                    />
                 ))}
             </List>
             <Divider />
